@@ -56,7 +56,7 @@ CREATE TABLE `jadwal_ujian` (
 CREATE TABLE `user` (
   `u_id` int(11) NOT NULL,
   `u_nik` varchar(100) NOT NULL,
-  `u_password` varchar(20) NOT NULL,
+  `u_password` varchar(32) NOT NULL,
   `u_nama_lengkap` varchar(100) NOT NULL,
   `u_email` varchar(100) NOT NULL,
   `u_no_kk` varchar(20) NOT NULL,
@@ -102,6 +102,7 @@ ALTER TABLE `jadwal_ujian`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`u_id`),
+  ADD UNIQUE(`u_nik`),
   ADD KEY `user_FK_1` (`jadwal_ujian_j_id`);
 
 --

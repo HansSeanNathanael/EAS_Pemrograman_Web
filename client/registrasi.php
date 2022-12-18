@@ -15,7 +15,7 @@
             <div class="row p-5 align-middle justify-content-center">
                 <div class="col-6 p-5 rounded-corners bg-light">
                     <div class="col-12">
-                        <form id="form-registrasi" method="post" action="../server/registrasi.php">
+                        <form id="form-registrasi" method="post" action="../server/register.php">
                             <div class="col-12 d-flex justify-content-center">
                                 <div class="form-outline col-4">
                                     <img class="img-fluid" src="./images/logo.png" alt="Logo Lemari"/>
@@ -25,53 +25,53 @@
     
                             <!-- Input nomor induk kependudukan -->
                             <div class="form-outline mt-4">
-                                <input type="text" name="nomor-induk-kependudukan" id="input-nik" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="NIK" />
+                                <input type="text" name="nomor_induk_kependudukan" id="input_nik" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="NIK" />
                             </div>
 
                             <!-- Input nomor kartu keluarga -->
                             <div class="form-outline mt-4">
-                                <input type="text" name="nomor-kartu-keluarga" id="input-kk" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Nomor KK"/>
+                                <input type="text" name="nomor_kartu_keluarga" id="input_kk" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Nomor KK"/>
                             </div>
     
                             <!-- Input nama lengkap -->
                             <div class="form-outline mt-4">
-                                <input type="text" name="nama-lengkap" id="input-nama-lengkap" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Nama Lengkap"/>
+                                <input type="text" name="nama_lengkap" id="input_nama_lengkap" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Nama Lengkap"/>
                             </div>
     
                             <!-- Input tempat lahir -->
                             <div class="form-outline mt-4">
-                                <input type="text" name="tempat-lahir" id="input-tempat-lahir" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Tempat Lahir"/>
+                                <input type="text" name="tempat_lahir" id="input_tempat_lahir" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Tempat Lahir"/>
                             </div>
     
                             <!-- Input tanggal lahir -->
                             <div class="form-outline mt-4">
-                                <input type="text" name="tanggal-lahir" id="input-tanggal-lahir" class="form-control rounded-pill border border-success primary-font fs-6 required" placeholder="Tanggal Lahir"/>
+                                <input type="text" name="tanggal_lahir" id="input_tanggal_lahir" class="form-control rounded-pill border border-success primary-font fs-6 required" placeholder="Tanggal Lahir"/>
                             </div>
     
                             <!-- Input nomor handphone -->
                             <div class="form-outline mt-4">
-                                <input type="text" name="nomor-handphone" id="input-nomor-handphone" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Nomor HP"/>
+                                <input type="text" name="nomor_handphone" id="input_nomor_handphone" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Nomor HP"/>
                             </div>
     
                             <!-- Input email -->
                             <div class="form-outline mt-4">
-                                <input type="text" name="email" id="input-email" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Email"/>
+                                <input type="text" name="email" id="input_email" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Email"/>
                             </div>
     
                             <!-- Input password -->
                             <div class="form-outline mt-4">
-                                <input type="password" name="password" id="input-password" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Password"/>
+                                <input type="password" name="password" id="input_password" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Password"/>
                             </div>
     
                             <!-- Input ulangi password -->
                             <div class="form-outline mt-4">
-                                <input type="password" name="ulangi-password" id="input-ulangi-password" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Ulangi Password"/>
+                                <input type="password" name="ulangi_password" id="input_ulangi_password" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Ulangi Password"/>
                             </div>
                         
                             <!-- Tombol registrasi -->
                             <div class="col d-flex justify-content-between mt-3">
-                                <button type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6" onclick="">Masuk</button>
-                                <button type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6" onclick="">Register</button>
+                                <button id="button-masuk" type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6">Masuk</button>
+                                <button id="button-register" type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6">Register</button>
                             </div>
                         </form>
                     </div>

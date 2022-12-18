@@ -5,3 +5,7 @@
 .rounded-corners {
     border-radius: 32px;
 }
+
+.error {
+    color: red;
+}

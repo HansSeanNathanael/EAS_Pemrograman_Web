@@ -15,7 +15,7 @@
             <div class="row p-5 align-middle justify-content-center">
                 <div class="col-6 p-5 rounded-corners bg-light">
                     <div class="col-12">
-                        <form id="form-registrasi" method="post" action="../server/registrasi.php">
+                        <form id="form-login" method="post" action="../server/login.php">
                             <div class="col-12 d-flex justify-content-center">
                                 <div class="form-outline col-4">
                                     <img class="img-fluid" src="./images/logo.png" alt="Logo Lemari"/>
@@ -25,24 +25,24 @@
     
                             <!-- Input nomor induk kependudukan -->
                             <div class="form-outline mt-4">
-                                <input type="text" name="nomor-induk-kependudukan" id="input-nik" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="NIK" />
+                                <input type="text" name="nomor_induk_kependudukan" id="input_nik" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="NIK" />
                             </div>
     
                             <!-- Input password -->
                             <div class="form-outline mt-4">
-                                <input type="password" name="password" id="input-password" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Password"/>
+                                <input type="password" name="password" id="input_password" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Password"/>
                             </div>
                         
                             <!-- Tombol registrasi -->
                             <div class="col d-flex justify-content-between mt-3">
-                                <button type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6" onclick="">Registrasi</button>
-                                <button type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6" onclick="">Masuk</button>
+                                <button id="button-registrasi" type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6">Registrasi</button>
+                                <button id="button-masuk" type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6">Masuk</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src=""></script>
+        <script type="text/javascript" src="./login.js"></script>
     </body>
 </html>
