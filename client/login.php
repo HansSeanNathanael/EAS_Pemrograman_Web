@@ -1,3 +1,11 @@
+<?php 
+    include "../server/config.php";
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+?>
+
+<?php if(!isset($_SESSION["izin"])): ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -46,3 +54,12 @@
         <script type="text/javascript" src="./login.js"></script>
     </body>
 </html>
+<?php elseif(isset($_SESSION["izin"]) && $_SESSION["izin"] == "user"): ?>
+    <?php
+        header("Location: ./home.php") 
+    ?>
+<?php elseif(isset($_SESSION["izin"]) && $_SESSION["izin"] == "admin"): ?>
+    <?php
+        header("Location: ./admin/home.php") 
+    ?>
+<?php endif ?>

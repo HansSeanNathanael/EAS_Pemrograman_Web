@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home</title>
+        <title>Cetak Kartu Ujian</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
         <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.css">
@@ -17,7 +17,7 @@
             <div class="col-12 m-0 px-5 py-2 bg-black d-flex justify-content-between">
                 <div class="col-1">
                     <div class="col-10 p-1">
-                        <a href="./home.html"><img class="img-fluid" src="./images/logo.png" alt="logo"></a>
+                        <a href="./home.php"><img class="img-fluid" src="./images/logo.png" alt="logo"></a>
                     </div>
                 </div>
                 <div class="d-flex align-items-center px-3">
@@ -35,9 +35,9 @@
                 <div class="d-flex align-items-center px-3">
                     <div class="container">
                         <div class="dropdown">
-                            <button id="tes" type="button" class="btn btn-light rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Nama</button>
+                            <button id="tes" type="button" class="btn btn-light rounded-pill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $data["u_nama_lengkap"]; ?></button>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="tes">
-                                <li><a class="dropdown-item primary-font" href="#">Keluar</a></li>
+                                <li><a class="dropdown-item primary-font" href="../server/keluar.php">Keluar</a></li>
                             </ul>
                         </div>
                     </div>
