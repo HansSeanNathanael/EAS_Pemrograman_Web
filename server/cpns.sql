@@ -140,3 +140,25 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+DROP TRIGGER IF EXISTS update_user_status_pendaftaran;
+
+DELIMITER $$
+
+CREATE TRIGGER update_user_status_pendaftaran
+    BEFORE UPDATE 
+    ON user
+    FOR EACH ROW
+BEGIN
+  IF  NEW.u_alamat IS NOT NULL AND NEW.u_jenis_kelamin IS NOT NULL AND 
+      NEW.u_kualifikasi_pendidikan IS NOT NULL AND NEW.u_instansi IS NOT NULL AND 
+      NEW.u_departemen IS NOT NULL AND NEW.u_formasi_jabatan IS NOT NULL AND 
+      NEW.u_pas_foto IS NOT NULL AND NEW.u_foto_ktp IS NOT NULL AND NEW.u_foto_kk IS NOT NULL AND 
+      NEW.u_ijazah IS NOT NULL AND NEW.u_transkrip_nilai IS NOT NULL AND (NEW.u_status_pendaftaran IS NULL OR NEW.u_status_pendaftaran != "Lolos")
+  THEN
+    SET NEW.u_status_pendaftaran = "Menunggu Verifikasi";
+  END IF;
+
+END $$
+
+DELIMITER ;

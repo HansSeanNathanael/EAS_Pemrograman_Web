@@ -68,7 +68,7 @@
                         $ijazah = $paths["ijazah"];
                         $transkrip_nilai = $paths["transkrip_nilai"];
 
-                        $query = "UPDATE user SET u_pas_foto = '$pas_foto', u_foto_ktp = '$foto_ktp', u_foto_kk = '$foto_kk', u_ijazah = '$ijazah', u_transkrip_nilai = '$transkrip_nilai', u_status_pendaftaran = 'Menunggu Konfirmasi' WHERE u_id = $akun_id";
+                        $query = "UPDATE user SET u_pas_foto = '$pas_foto', u_foto_ktp = '$foto_ktp', u_foto_kk = '$foto_kk', u_ijazah = '$ijazah', u_transkrip_nilai = '$transkrip_nilai' WHERE u_id = $akun_id";
                         $result = mysqli_query($connection, $query);
                     }
                     else {

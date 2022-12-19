@@ -59,7 +59,7 @@
                     <a class="text-decoration-none" href="./hasil_ujian.php"><p class="m-0 p-0 primary-font text-light">Cek Hasil Ujian</p></a>
                 </div>
                 <div class="d-flex align-items-center px-3">
-                    <a class="text-decoration-none" href="<?php echo ($data["u_status_pendaftaran"] == "valid") ? "./kartu_ujian.php" : "#" ?>"><p class="m-0 p-0 primary-font <?php echo ($data["u_status_pendaftaran"] == "valid") ? "text-light" : "text-white-50" ?>">Cetak Kartu Ujian</p></a>
+                    <a class="text-decoration-none" href="<?php echo ($data["u_status_pendaftaran"] == "Lolos") ? "./kartu_ujian.php" : "#" ?>"><p class="m-0 p-0 primary-font <?php echo ($data["u_status_pendaftaran"] == "Lolos") ? "text-light" : "text-white-50" ?>">Cetak Kartu Ujian</p></a>
                 </div>
                 <div class="d-flex align-items-center px-3">
                     <div class="container">

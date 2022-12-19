@@ -39,7 +39,7 @@
                 $result_data = mysqli_fetch_array($result_status);
 
                 if ($result_data["u_status_pendaftaran"] != "Valid") {
-                    $query = "UPDATE user SET u_no_telp = '$nomor_handphone', u_email = '$email', u_alamat = '$alamat', u_jenis_kelamin = '$jenis_kelamin', u_kualifikasi_pendidikan = '$kualifikasi_pendidikan', u_instansi = '$instansi', u_departemen = '$departemen', u_formasi_jabatan = '$formasi_jabatan', u_status_pendaftaran = 'Menunggu Konfirmasi' WHERE u_id = $akun_id";
+                    $query = "UPDATE user SET u_no_telp = '$nomor_handphone', u_email = '$email', u_alamat = '$alamat', u_jenis_kelamin = '$jenis_kelamin', u_kualifikasi_pendidikan = '$kualifikasi_pendidikan', u_instansi = '$instansi', u_departemen = '$departemen', u_formasi_jabatan = '$formasi_jabatan' WHERE u_id = $akun_id";
                     $result = mysqli_query($connection, $query);
                 }
             }
