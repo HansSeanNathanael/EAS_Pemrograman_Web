@@ -10,10 +10,24 @@
 
     else if (isset($_SESSION["izin"]) && $_SESSION["izin"] == "user") {
         $user_id = $_SESSION["id"];
-        $query = "SELECT u_nama_lengkap, u_status_pendaftaran, u_instansi, jadwal_ujian_j_id, u_nik, u_nomor_registrasi, u_jenis_kelamin, u_tempat_lahir, u_tanggal_lahir, u_kualifikasi_pendidikan, u_formasi_jabatan FROM user WHERE u_id = $user_id";
+        $query = "SELECT u_nama_lengkap, u_status_pendaftaran, u_instansi, jadwal_ujian_j_id, u_nik, u_nomor_registrasi, u_jenis_kelamin, u_tempat_lahir, u_tanggal_lahir, u_kualifikasi_pendidikan, u_pas_foto, u_formasi_jabatan FROM user WHERE u_id = $user_id";
         $result = mysqli_query($connection, $query);
+
+        
         if ($result && mysqli_num_rows($result) == 1) {
-            $data = mysqli_fetch_array($result); 
+            $data = mysqli_fetch_array($result);
+
+            $jadwal_id = $data["jadwal_ujian_j_id"];
+
+            $query_lokasi_tes = "SELECT j_lokasi_ujian, j_tanggal_ujian, j_waktu_ujian FROM jadwal_ujian WHERE j_id = $jadwal_id";
+            $result_lokasi_tes = mysqli_query($connection, $query_lokasi_tes);
+
+            if ($result_lokasi_tes) {
+                $data_jadwal = mysqli_fetch_array($result_lokasi_tes); 
+            }
+            else {
+                $error = "Gagal mengambil data";
+            }
         }
         else {
             $error = "Gagal mengambil data";
@@ -27,7 +41,7 @@
     <?php
         echo $error; 
     ?>
-<?php else: ?>
+<?php elseif($data["u_status_pendaftaran"] == "Lolos"): ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,16 +65,16 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center px-3">
-                    <a class="text-decoration-none" href="#"><p class="m-0 p-0 primary-font text-primary">Beranda</p></a>
+                    <a class="text-decoration-none" href="./home.php"><p class="m-0 p-0 primary-font text-primary">Beranda</p></a>
                 </div>
                 <div class="d-flex align-items-center px-3">
-                    <a class="text-decoration-none" href="#"><p class="m-0 p-0 primary-font text-light">Cek Status Pendaftaran</p></a>
+                    <a class="text-decoration-none" href="./status_pendaftaran.php"><p class="m-0 p-0 primary-font text-light">Cek Status Pendaftaran</p></a>
                 </div>
                 <div class="d-flex align-items-center px-3">
-                    <a class="text-decoration-none" href="#"><p class="m-0 p-0 primary-font text-light">Cek Hasil Ujian</p></a>
+                    <a class="text-decoration-none" href="./hasil_ujian.php"><p class="m-0 p-0 primary-font text-light">Cek Hasil Ujian</p></a>
                 </div>
                 <div class="d-flex align-items-center px-3">
-                    <a class="text-decoration-none" href="#"><p class="m-0 p-0 primary-font text-light">Cetak Kartu Ujian</p></a>
+                    <a class="text-decoration-none" href="./kartu_ujian.php"><p class="m-0 p-0 primary-font text-light">Cetak Kartu Ujian</p></a>
                 </div>
                 <div class="d-flex align-items-center px-3">
                     <div class="container">
@@ -110,7 +124,15 @@
                                         <p class="primary-font fs-5">Lokasi Tes</p>
                                     </div>
                                     <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3"> </p>
+                                        <p class="primary-font fs-5 ps-3"><?php echo $data_jadwal["j_lokasi_ujian"]; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex flex-row">
+                                    <div class="col-4">
+                                        <p class="primary-font fs-5">Jadwal Tes</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="primary-font fs-5 ps-3"><?php echo $data_jadwal["j_tanggal_ujian"]." ".$data_jadwal["j_waktu_ujian"]; ?> </p>
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex flex-row">
@@ -150,7 +172,7 @@
                                         <p class="primary-font fs-5">Tempat/Tanggal Lahir</p>
                                     </div>
                                     <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3"><?php echo $data["u_tempat_lahir"]."/".$data["u_tangga_lahir"]; ?></p>
+                                        <p class="primary-font fs-5 ps-3"><?php echo $data["u_tempat_lahir"]."/".$data["u_tanggal_lahir"]; ?></p>
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex flex-row">
@@ -172,8 +194,9 @@
                             </div>
                             <div class="row col-3 d-flex flex-column">
                                 <svg id="barcode"></svg>
-                                <script>JsBarcode("#barcode", "<?php echo $data["u_nomor_registrasi"]; ?>");</script>
-                                <img class="img-fluid" src="./images/foto kosong.png">
+                                <script>JsBarcode("#barcode", ("00000000" + "<?php echo $data["u_nomor_registrasi"]; ?>").slice(-8));</script>
+                                
+                                <img class="img-fluid" src="../server<?php echo $data["u_pas_foto"]; ?>">
                             </div>
                         </div>
                     </div>
@@ -183,4 +206,8 @@
         <script type="text/javascript" src="./kartu_ujian.js"></script>
     </body>
 </html>
+<?php else: ?>
+    <?php
+        header("Location: ./home.php"); 
+    ?>
 <?php endif ?>

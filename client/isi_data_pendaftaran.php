@@ -9,7 +9,7 @@
     }
     else if (isset($_SESSION["izin"]) && $_SESSION["izin"] == "user") {
         $user_id = $_SESSION["id"];
-        $query = "SELECT u_nik, u_nama_lengkap, u_email, u_no_kk, u_no_telp, u_tempat_lahir, u_tanggal_lahir, u_alamat, u_jenis_kelamin, u_kualifikasi_pendidikan, u_instansi, u_departemen, u_formasi_jabatan FROM user WHERE u_id = $user_id";
+        $query = "SELECT u_nik, u_nama_lengkap, u_email, u_no_kk, u_no_telp, u_tempat_lahir, u_tanggal_lahir, u_alamat, u_jenis_kelamin, u_kualifikasi_pendidikan, u_instansi, u_departemen, u_formasi_jabatan, u_status_pendaftaran FROM user WHERE u_id = $user_id";
         $result = mysqli_query($connection, $query);
         if ($result && mysqli_num_rows($result) == 1) {
             $data = mysqli_fetch_array($result); 

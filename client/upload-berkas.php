@@ -9,6 +9,14 @@
     }
     else if (isset($_SESSION["izin"]) && $_SESSION["izin"] == "user") {
         $user_id = $_SESSION["id"];
+        $query = "SELECT u_nik, u_nama_lengkap , u_pas_foto, u_foto_ktp, u_foto_kk, u_ijazah, u_transkrip_nilai, u_status_pendaftaran FROM user WHERE u_id = $user_id";
+        $result = mysqli_query($connection, $query);
+        if ($result && mysqli_num_rows($result) == 1) {
+            $data = mysqli_fetch_array($result); 
+        }
+        else {
+            $error = "Gagal mengambil data";
+        }
     }
     else {
         header("Location: ./login.php");
@@ -36,16 +44,16 @@
                     </div>
                 </div>
                 <div class="d-flex align-items-center px-3">
-                    <a class="text-decoration-none" href="#"><p class="m-0 p-0 primary-font text-light">Beranda</p></a>
+                    <a class="text-decoration-none" href="./home.php"><p class="m-0 p-0 primary-font text-light">Beranda</p></a>
                 </div>
                 <div class="d-flex align-items-center px-3">
-                    <a class="text-decoration-none" href="#"><p class="m-0 p-0 primary-font text-light">Cek Status Pendaftaran</p></a>
+                    <a class="text-decoration-none" href="./status_pendaftaran.php"><p class="m-0 p-0 primary-font text-light">Cek Status Pendaftaran</p></a>
                 </div>
                 <div class="d-flex align-items-center px-3">
-                    <a class="text-decoration-none" href="#"><p class="m-0 p-0 primary-font text-light">Cek Hasil Ujian</p></a>
+                    <a class="text-decoration-none" href="./hasil_ujian.php"><p class="m-0 p-0 primary-font text-light">Cek Hasil Ujian</p></a>
                 </div>
                 <div class="d-flex align-items-center px-3">
-                    <a class="text-decoration-none" href="#"><p class="m-0 p-0 primary-font text-light">Cetak Kartu Ujian</p></a>
+                    <a class="text-decoration-none" href="<?php echo ($data["u_status_pendaftaran"] == "Lolos") ? "./kartu_ujian.php" : "#" ?>"><p class="m-0 p-0 primary-font <?php echo ($data["u_status_pendaftaran"] == "Lolos") ? "text-light" : "text-white-50" ?>">Cetak Kartu Ujian</p></a>
                 </div>
                 <div class="d-flex align-items-center px-3">
                     <div class="container">
