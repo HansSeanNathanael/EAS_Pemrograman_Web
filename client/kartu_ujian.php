@@ -1,3 +1,33 @@
+<?php 
+    include "../server/config.php";
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if (isset($_SESSION["izin"]) && $_SESSION["izin"] == "admin") {
+        header("Location: ./admin/home.php");
+    }
+
+    else if (isset($_SESSION["izin"]) && $_SESSION["izin"] == "user") {
+        $user_id = $_SESSION["id"];
+        $query = "SELECT u_nama_lengkap, u_status_pendaftaran, u_instansi, jadwal_ujian_j_id, u_nik, u_nomor_registrasi, u_jenis_kelamin, u_tempat_lahir, u_tanggal_lahir, u_kualifikasi_pendidikan, u_formasi_jabatan FROM user WHERE u_id = $user_id";
+        $result = mysqli_query($connection, $query);
+        if ($result && mysqli_num_rows($result) == 1) {
+            $data = mysqli_fetch_array($result); 
+        }
+        else {
+            $error = "Gagal mengambil data";
+        }
+    }
+    else {
+        header("Location: ./login.php");
+    }
+?>
+<?php if(isset($error)): ?>
+    <?php
+        echo $error; 
+    ?>
+<?php else: ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -66,77 +96,13 @@
                         </nav>
                         <hr>
                         <div class="col-12 d-flex flex-row">
-                            <div class="row col-9 d-flex flex-column">
+                            <div class="row col-9 d-flex flex-column pb-3">
                                 <div class="col-12 d-flex flex-row">
                                     <div class="col-4">
                                         <p class="primary-font fs-5">Instansi</p>
                                     </div>
                                     <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3">Kementrian Kelautan dan Perikanan</p>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-flex flex-row">
-                                    <div class="col-4">
-                                        <p class="primary-font fs-5">Lokasi</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3">Instiut Teknologi Sepuluh Nopember</p>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-flex flex-row">
-                                    <div class="col-4">
-                                        <p class="primary-font fs-5">NIK</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3">3204287003920001</p>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-flex flex-row">
-                                    <div class="col-4">
-                                        <p class="primary-font fs-5">Nomor Peserta</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3">000005162</p>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-flex flex-row">
-                                    <div class="col-4">
-                                        <p class="primary-font fs-5">Nama</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3">Yoga Prameswara Mamahit</p>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-flex flex-row">
-                                    <div class="col-4">
-                                        <p class="primary-font fs-5">Jenis Kelamin</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3">Laki-laki</p>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-flex flex-row">
-                                    <div class="col-4">
-                                        <p class="primary-font fs-5">Tempat/Tanggal Lahir</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3">Jakarta/30-01-1993</p>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-flex flex-row">
-                                    <div class="col-4">
-                                        <p class="primary-font fs-5">Kualifikasi Pendidikan</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3">SLTA</p>
-                                    </div>
-                                </div>
-                                <div class="col-12 d-flex flex-row">
-                                    <div class="col-4">
-                                        <p class="primary-font fs-5">Formasi Jabatan</p>
-                                    </div>
-                                    <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3">Pengawas Perikanan Pertama</p>
+                                        <p class="primary-font fs-5 ps-3"><?php echo $data["u_instansi"]; ?></p>
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex flex-row">
@@ -144,12 +110,69 @@
                                         <p class="primary-font fs-5">Lokasi Tes</p>
                                     </div>
                                     <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3">GEDUNG MINA BAHARI III KEMENTRIAN KELAUTAN DAN PERIKANAN JAKARTA</p>
+                                        <p class="primary-font fs-5 ps-3"> </p>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex flex-row">
+                                    <div class="col-4">
+                                        <p class="primary-font fs-5">NIK</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="primary-font fs-5 ps-3"><?php echo $data["u_nik"]; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex flex-row">
+                                    <div class="col-4">
+                                        <p class="primary-font fs-5">Nomor Peserta</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="primary-font fs-5 ps-3"><?php echo $data["u_nomor_registrasi"]; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex flex-row">
+                                    <div class="col-4">
+                                        <p class="primary-font fs-5">Nama</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="primary-font fs-5 ps-3"><?php echo $data["u_nama_lengkap"]; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex flex-row">
+                                    <div class="col-4">
+                                        <p class="primary-font fs-5">Jenis Kelamin</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="primary-font fs-5 ps-3"><?php echo $data["u_jenis_kelamin"]; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex flex-row">
+                                    <div class="col-4">
+                                        <p class="primary-font fs-5">Tempat/Tanggal Lahir</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="primary-font fs-5 ps-3"><?php echo $data["u_tempat_lahir"]."/".$data["u_tangga_lahir"]; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex flex-row">
+                                    <div class="col-4">
+                                        <p class="primary-font fs-5">Kualifikasi Pendidikan</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="primary-font fs-5 ps-3"><?php echo $data["u_kualifikasi_pendidikan"]; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex flex-row">
+                                    <div class="col-4">
+                                        <p class="primary-font fs-5">Formasi Jabatan</p>
+                                    </div>
+                                    <div class="col-8">
+                                        <p class="primary-font fs-5 ps-3"><?php echo $data["u_formasi_jabatan"]; ?></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="row col-3 d-flex flex-column">
                                 <svg id="barcode"></svg>
+                                <script>JsBarcode("#barcode", "<?php echo $data["u_nomor_registrasi"]; ?>");</script>
                                 <img class="img-fluid" src="./images/foto kosong.png">
                             </div>
                         </div>
@@ -160,3 +183,4 @@
         <script type="text/javascript" src="./kartu_ujian.js"></script>
     </body>
 </html>
+<?php endif ?>

@@ -154,7 +154,9 @@ BEGIN
       NEW.u_kualifikasi_pendidikan IS NOT NULL AND NEW.u_instansi IS NOT NULL AND 
       NEW.u_departemen IS NOT NULL AND NEW.u_formasi_jabatan IS NOT NULL AND 
       NEW.u_pas_foto IS NOT NULL AND NEW.u_foto_ktp IS NOT NULL AND NEW.u_foto_kk IS NOT NULL AND 
-      NEW.u_ijazah IS NOT NULL AND NEW.u_transkrip_nilai IS NOT NULL AND (NEW.u_status_pendaftaran IS NULL OR NEW.u_status_pendaftaran != "Lolos")
+      NEW.u_ijazah IS NOT NULL AND NEW.u_transkrip_nilai IS NOT NULL AND (NEW.u_status_pendaftaran IS NULL OR 
+      ((OLD.u_status_pendaftaran = "Revisi Data" OR OLD.u_status_pendaftaran = "Belum Isi Data") AND 
+      NEW.u_status_pendaftaran != "Lolos"))
   THEN
     SET NEW.u_status_pendaftaran = "Menunggu Verifikasi";
   END IF;
@@ -170,10 +172,13 @@ DELIMITER $$
 CREATE PROCEDURE lolos_berkas(user_id INT)
 BEGIN
   DECLARE jadwal_id INT DEFAULT -1;
+  DECLARE total_lolos_berkas INT DEFAULT -1;
 
   SELECT j_id INTO jadwal_id FROM jadwal_ujian WHERE j_kuota > 0 ORDER BY j_id LIMIT 1;
-  UPDATE user SET jadwal_ujian_j_id = jadwal_id WHERE u_id = user_id;
+  UPDATE user SET jadwal_ujian_j_id = jadwal_id, u_status_pendaftaran = 'Lolos' WHERE u_id = user_id AND (u_status_pendaftaran = "Menunggu Verifikasi" OR u_status_pendaftaran = "Revisi Data");
   UPDATE jadwal_ujian SET j_kuota = j_kuota - 1 WHERE j_id = jadwal_id;
+
+  UPDATE user SET u_nomor_registrasi = (SELECT COUNT(*) FROM user WHERE u_status_pendaftaran = "Lolos") WHERE u_id = user_id;
 END $$
 
 DELIMITER ;

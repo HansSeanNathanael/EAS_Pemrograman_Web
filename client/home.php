@@ -77,7 +77,7 @@
                 <div class="card-corner bg-light p-4"> 
                     <div class="row col-12">
                         <div class="col-3 m-0">
-                            <img src="<?php echo $data["u_pas_foto"] == null ? "./images/foto kosong.png" : $data["u_pas_foto"] ?>" class="img-fluid">
+                            <img src="<?php echo $data["u_pas_foto"] == null ? "./images/foto kosong.png" : "../server".$data["u_pas_foto"] ?>" class="img-fluid">
                         </div>
                         <div class="col-9 px-5"> 
                             <div class="row d-flex flex-column">

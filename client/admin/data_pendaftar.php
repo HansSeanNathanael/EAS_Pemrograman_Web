@@ -27,7 +27,7 @@
             }
         }
         else {
-            // header("Location: ./home.php");
+            header("Location: ./home.php");
         }
     }
     else {
@@ -162,7 +162,7 @@
                             } 
                             else {
                                 $link = $user_data["u_foto_kk"];
-                                echo "<a class='primary-font fs-5 mt-2' href='../../server$link' target='_blank'>Klik untuk membuka Foto Kartu Tanda Penduduk</a>";
+                                echo "<a class='primary-font fs-5 mt-2' href='../../server$link' target='_blank'>Klik untuk membuka Foto Kartu Keluarga</a>";
                             }
                         ?>
                     </div>
@@ -176,7 +176,7 @@
                             } 
                             else {
                                 $link = $user_data["u_ijazah"];
-                                echo "<a class='primary-font fs-5 mt-2' href='../../server$link' target='_blank'>Klik untuk membuka Foto Kartu Tanda Penduduk</a>";
+                                echo "<a class='primary-font fs-5 mt-2' href='../../server$link' target='_blank'>Klik untuk membuka Foto Ijazah</a>";
                             }
                         ?>
                     </div>
@@ -190,20 +190,22 @@
                             } 
                             else {
                                 $link = $user_data["u_transkrip_nilai"];
-                                echo "<a class='primary-font fs-5 mt-2' href='../../server$link' target='_blank'>Klik untuk membuka Foto Kartu Tanda Penduduk</a>";
+                                echo "<a class='primary-font fs-5 mt-2' href='../../server$link' target='_blank'>Klik untuk membuka Foto Transkrip Nilai</a>";
                             }
                         ?>
                     </div>
                 </div>
                 <div class="row d-flex flex-column py-2">
                     <div class="d-flex flex-row justify-content-between px-4 py-3">
-                        <button type="button" class="btn btn-success btn-block col-4 rounded-pill primary-font fs-6">Valid</button>
-                        <button type="button" class="btn btn-danger btn-block col-4 rounded-pill primary-font fs-6">Revisi</button>
+                        <?php if ($user_data["u_status_pendaftaran"] == "Menunggu Verifikasi" || $user_data["u_status_pendaftaran"] == "Revisi Data"): ?>
+                            <button type="button" class="btn btn-success btn-block col-4 rounded-pill primary-font fs-6" onclick="ubah_status(<?php echo $user_id; ?>, 'Lolos');">Lolos</button>
+                            <button type="button" class="btn btn-danger btn-block col-4 rounded-pill primary-font fs-6" onclick="ubah_status(<?php echo $user_id; ?>, 'Revisi Data');">Revisi</button>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src=""></script>
+        <script type="text/javascript" src="./data_pendaftar.js"></script>
     </body>
 </html>
 <?php endif ?>

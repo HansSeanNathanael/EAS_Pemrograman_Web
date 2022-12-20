@@ -34,7 +34,7 @@
     
             if ($password == $ulangi_password) {
                 $hashed_password = md5($password);
-                $query = "INSERT INTO user (u_nik, u_password, u_nama_lengkap, u_email, u_no_kk, u_no_telp, u_tempat_lahir, u_tanggal_lahir) VALUES ('$nik', '$hashed_password', '$nama', '$email', '$no_kk', '$nomor_hp', '$tempat_lahir', '$tanggal_lahir')";
+                $query = "INSERT INTO user (u_nik, u_password, u_nama_lengkap, u_email, u_no_kk, u_no_telp, u_tempat_lahir, u_tanggal_lahir, u_status_pendaftaran) VALUES ('$nik', '$hashed_password', '$nama', '$email', '$no_kk', '$nomor_hp', '$tempat_lahir', '$tanggal_lahir', 'Belum Isi Data')";
                 
                 $result = mysqli_query($connection, $query);
     
