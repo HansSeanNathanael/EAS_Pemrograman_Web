@@ -88,7 +88,7 @@
                                 
                                 <div class="col-6 p-2 m-0 d-flex flex-column justify-content-center">
                                 <?php if(isset($data["u_pas_foto"]) && !is_null($data["u_pas_foto"])): ?>    
-                                    <a href="<?php echo "./server".$data["u_pas_foto"] ?>"><p class="primary-font fs-6 text-center">Pas Foto</p></a>
+                                    <a href="<?php echo "../server".$data["u_pas_foto"] ?>"><p class="primary-font fs-6 text-center">Pas Foto</p></a>
                                 <?php else: ?>
                                     <p class="primary-font fs-6 text-center">Belum upload</p>
                                 <?php endif ?>
@@ -105,7 +105,7 @@
                                 <?php endif ?>
                                 <div class="col-6 p-2 m-0 d-flex flex-column justify-content-center">
                                     <?php if(isset($data["u_foto_ktp"]) && !is_null($data["u_foto_kk"])): ?>    
-                                        <a href="<?php echo "./server".$data["u_foto_ktp"] ?>"><p class="primary-font fs-6 text-center">Foto Kartu Tanda Penduduk</p></a>
+                                        <a href="<?php echo "../server".$data["u_foto_ktp"] ?>"><p class="primary-font fs-6 text-center">Foto Kartu Tanda Penduduk</p></a>
                                     <?php else: ?>
                                         <p class="primary-font fs-6 text-center">Belum upload</p>
                                     <?php endif ?>
@@ -122,7 +122,7 @@
                                 <?php endif ?>
                                 <div class="col-6 p-2 m-0 d-flex flex-column justify-content-center">
                                     <?php if(isset($data["u_foto_kk"]) && !is_null($data["u_foto_kk"])): ?>    
-                                        <a href="<?php echo "./server".$data["u_foto_kk"] ?>"><p class="primary-font fs-6 text-center">Foto Kartu Keluarga</p></a>
+                                        <a href="<?php echo "../server".$data["u_foto_kk"] ?>"><p class="primary-font fs-6 text-center">Foto Kartu Keluarga</p></a>
                                     <?php else: ?>
                                         <p class="primary-font fs-6 text-center">Belum upload</p>
                                     <?php endif ?>
@@ -139,7 +139,7 @@
                                 <?php endif ?>
                                 <div class="col-6 p-2 m-0 d-flex flex-column justify-content-center">
                                     <?php if(isset($data["u_ijazah"]) && !is_null($data["u_ijazah"])): ?>    
-                                        <a href="<?php echo "./server".$data["u_ijazah"] ?>"><p class="primary-font fs-6 text-center">Foto Ijazah</p></a>
+                                        <a href="<?php echo "../server".$data["u_ijazah"] ?>"><p class="primary-font fs-6 text-center">Foto Ijazah</p></a>
                                     <?php else: ?>
                                         <p class="primary-font fs-6 text-center">Belum upload</p>
                                     <?php endif ?>
@@ -156,7 +156,7 @@
                                 <?php endif ?>
                                 <div class="col-6 p-2 m-0 d-flex flex-column justify-content-center">
                                     <?php if(isset($data["u_transkrip_nilai"]) && !is_null($data["u_transkrip_nilai"])): ?>    
-                                        <a href="<?php echo "./server".$data["u_transkrip_nilai"] ?>"><p class="primary-font fs-6 text-center">Foto Transkrip Nilai</p></a>
+                                        <a href="<?php echo "../server".$data["u_transkrip_nilai"] ?>"><p class="primary-font fs-6 text-center">Foto Transkrip Nilai</p></a>
                                     <?php else: ?>
                                         <p class="primary-font fs-6 text-center">Belum upload</p>
                                     <?php endif ?>
