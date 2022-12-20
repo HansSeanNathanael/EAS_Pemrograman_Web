@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="../css/login_registrasi.css">
 		<link rel="stylesheet" type="text/css" href="../css/font.css">
+		<link rel="stylesheet" type="text/css" href="../css/color.css">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     </head>
@@ -15,7 +16,7 @@
             <div class="row p-5 align-middle justify-content-center">
                 <div class="col-6 p-5 rounded-corners bg-light">
                     <div class="col-12">
-                        <form id="form-registrasi" method="post" action="../server/registrasi.php">
+                        <form id="form-login-admin" method="post" action="../../server/login_admin.php">
                             <div class="col-12 d-flex justify-content-center">
                                 <div class="form-outline col-4">
                                     <img class="img-fluid" src="../images/logo.png" alt="Logo Lemari"/>
@@ -25,7 +26,7 @@
     
                             <!-- Input nomor induk kependudukan -->
                             <div class="form-outline mt-4">
-                                <input type="text" name="nomor-induk-kependudukan" id="input-nik" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="NIK" />
+                                <input type="text" name="username" id="input-nik" class="form-control rounded-pill border border-success primary-font fs-6 required" value="" placeholder="Username" />
                             </div>
     
                             <!-- Input password -->
@@ -35,13 +36,13 @@
                         
                             <!-- Tombol registrasi -->
                             <div class="col d-flex justify-content-end mt-3">
-                                <button type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6" onclick="">Masuk</button>
+                                <button id="button-masuk" type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6">Masuk</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src=""></script>
+        <script type="text/javascript" src="./login.js"></script>
     </body>
 </html>

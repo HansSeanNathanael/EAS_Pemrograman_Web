@@ -5,7 +5,7 @@
         session_start();
     }
 
-    // if (isset($_SESSION["izin"]) && $_SESSION["izin"] == "admin") {
+    if (isset($_SESSION["izin"]) && $_SESSION["izin"] == "admin") {
 
         $_POST = json_decode(file_get_contents('php://input'), true);
 
@@ -25,7 +25,7 @@
         if ($data_complete) {
             $kategori = $_POST["kategori"];
     
-            $query = "SELECT u_id, u_nama_lengkap, u_status_pendaftaran FROM user WHERE u_status_pendaftara = '$kategori'";
+            $query = "SELECT u_id, u_nama_lengkap, u_status_pendaftaran FROM user WHERE u_status_pendaftaran = '$kategori'";
             $result = mysqli_query($connection, $query);
 
             if ($result) {
@@ -34,18 +34,18 @@
                     $data[] = $row;
                 }
             }
+            echo json_encode($data);
         }
-        echo json_encode($data);
-    // }
-    // else {
-    //     if ($_SESSION["izin"] == "user") {
-    //         header("Location: ../client/home.php");
-    //     }
-    //     else if ($_SESSION["izin"] == "admin") {
-    //         header("Location: ../client/admin/home.php");
-    //     }
-    //     else {
-    //         header("Location: ../client/login.php");
-    //     }
-    // }
+    }
+    else {
+        if ($_SESSION["izin"] == "user") {
+            header("Location: ../client/home.php");
+        }
+        else if ($_SESSION["izin"] == "admin") {
+            header("Location: ../client/admin/home.php");
+        }
+        else {
+            header("Location: ../client/login.php");
+        }
+    }
 ?>

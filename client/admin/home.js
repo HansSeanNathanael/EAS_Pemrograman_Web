@@ -11,10 +11,10 @@ $(document).ready(function() {
         dataBaru.classList.add("w-50");
         dataBaru.classList.add("p-1");
         dataBaru.innerHTML = `
-            <div class="border border-1 border-primary bg-white px-3 py-1 card-corner">
+            <div id="data-${id}" class="border border-1 border-primary bg-white px-3 py-1 card-corner clickable">
                 <p class="primary-font fs-5 text-black mb-2">${nama}</p>
                 <div class="d-flex flex-row p-0">
-                    <p id="data-${id}"class="bg-${button_color[status]} rounded-pill m-0 py-2 px-3 primary-font text-white fs-6">${status}</p>
+                    <p class="bg-${button_color[status]} rounded-pill m-0 py-2 px-3 primary-font text-white fs-6">${status}</p>
                 </div>
             </div>
         `;
@@ -22,7 +22,7 @@ $(document).ready(function() {
         daftar_akun.appendChild(dataBaru);
 
         $(`#data-${id}`).click(function() {
-            
+            window.location.href = `./data_pendaftar.php?user_id=${id}`;
         });
     }
 
@@ -38,6 +38,9 @@ $(document).ready(function() {
             return response.json();
         }).then((query_result) => {
             let daftar_akun = document.getElementById("list-pendaftar");
+            while (daftar_akun.firstChild) {
+                daftar_akun.removeChild(daftar_akun.lastChild);
+            }
             
             for (let data of query_result) {
                 tambahDataPendaftar(daftar_akun, data["u_id"], data["u_nama_lengkap"], data["u_status_pendaftaran"]);

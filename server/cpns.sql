@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `a_id` int(11) NOT NULL,
-  `a_username` varchar(20) NOT NULL,
-  `a_password` varchar(20) NOT NULL
+  `a_username` varchar(32) NOT NULL,
+  `a_password` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -159,6 +159,21 @@ BEGIN
     SET NEW.u_status_pendaftaran = "Menunggu Verifikasi";
   END IF;
 
+END $$
+
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS lolos_berkas;
+
+DELIMITER $$
+
+CREATE PROCEDURE lolos_berkas(user_id INT)
+BEGIN
+  DECLARE jadwal_id INT DEFAULT -1;
+
+  SELECT j_id INTO jadwal_id FROM jadwal_ujian WHERE j_kuota > 0 ORDER BY j_id LIMIT 1;
+  UPDATE user SET jadwal_ujian_j_id = jadwal_id WHERE u_id = user_id;
+  UPDATE jadwal_ujian SET j_kuota = j_kuota - 1 WHERE j_id = jadwal_id;
 END $$
 
 DELIMITER ;

@@ -37,9 +37,9 @@
                         $tmp = $_FILES[$attribute[$i]]['tmp_name'];
         
                         $fotobaru = date('dmYHis').$foto;
-                        $paths[$attribute[$i]] = "./images/$fotobaru";
+                        $paths[$attribute[$i]] = "/images/$fotobaru";
         
-                        if(!move_uploaded_file($tmp, $paths[$attribute[$i]])) {
+                        if(!move_uploaded_file($tmp, ".".$paths[$attribute[$i]])) {
                             $success_moving_file = false;
                         }
                     }
@@ -47,19 +47,19 @@
                     if ($success_moving_file) {
         
                         if ($data_old_files["u_pas_foto"] != null) {
-                            unlink($data_old_files["u_pas_foto"]);
+                            unlink(".".$data_old_files["u_pas_foto"]);
                         }
                         if ($data_old_files["u_foto_ktp"] != null) {
-                            unlink($data_old_files["u_foto_ktp"]);
+                            unlink(".".$data_old_files["u_foto_ktp"]);
                         }
                         if ($data_old_files["u_foto_kk"] != null) {
-                            unlink($data_old_files["u_foto_kk"]);
+                            unlink(".".$data_old_files["u_foto_kk"]);
                         }
                         if ($data_old_files["u_ijazah"] != null) {
-                            unlink($data_old_files["u_ijazah"]);
+                            unlink(".".$data_old_files["u_ijazah"]);
                         }
                         if ($data_old_files["u_transkrip_nilai"] != null) {
-                            unlink($data_old_files["u_transkrip_nilai"]);
+                            unlink(".".$data_old_files["u_transkrip_nilai"]);
                         }
         
                         $pas_foto = $paths["pas_foto"];

@@ -5,3 +5,7 @@
 .card-corner {
     border-radius: 16px;
 }
+
+.clickable {
+    cursor: pointer;
+}

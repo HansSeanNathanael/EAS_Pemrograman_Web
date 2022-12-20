@@ -1,5 +1,5 @@
 <?php 
-    include "../server/config.php";
+    include "../../server/config.php";
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -9,7 +9,7 @@
     }
     else if ($_SESSION["izin"] == "admin") {
         $user_id = $_SESSION["id"];
-        $query = "SELECT a_id, a_username FROM user WHERE a_id = $user_id";
+        $query = "SELECT a_id, a_username FROM admin WHERE a_id = $user_id";
         $result = mysqli_query($connection, $query);
         if ($result && mysqli_num_rows($result) == 1) {
             $data = mysqli_fetch_array($result); 
