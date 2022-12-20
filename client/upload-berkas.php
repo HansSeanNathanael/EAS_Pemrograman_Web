@@ -80,7 +80,7 @@
                             <!-- Input pas-foto -->
                             <label class="primary-font fs-6" for="input-pas-foto">Pas Foto</label>
                             <div class="form-outline mb-4 mt-2 d-flex flex-row">
-                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"])): ?>
+                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"]) || $data["u_status_pendaftaran"] != "Lolos"): ?>
                                 <div class="col-6">
                                     <input type="file" name="pas_foto" id="input-pas-foto" class="form-control form-control-lg required">
                                 </div>
@@ -98,7 +98,7 @@
                             <!-- Input foto-ktp -->
                             <label class="primary-font fs-6" for="input-foto-ktp">Kartu Tanda Penduduk</label>
                             <div class="form-outline mb-4 mt-2 d-flex flex-row">
-                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"])): ?>
+                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"]) || $data["u_status_pendaftaran"] != "Lolos"): ?>
                                 <div class="col-6">
                                     <input type="file" name="foto_ktp" id="input-foto-ktp" class="form-control form-control-lg required">
                                 </div>
@@ -115,7 +115,7 @@
                             <!-- Input foto-kk -->
                             <label class="primary-font fs-6" for="input-foto-kk">Kartu Keluarga</label>
                             <div class="form-outline mb-4 mt-2 d-flex flex-row">
-                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"])): ?>
+                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"]) || $data["u_status_pendaftaran"] != "Lolos"): ?>
                                 <div class="col-6">
                                     <input type="file" name="foto_kk" id="input-foto-kk" class="form-control form-control-lg required">
                                 </div>
@@ -132,7 +132,7 @@
                             <!-- Input ijazah -->
                             <label class="primary-font fs-6" for="input-ijazah">Ijazah</label>
                             <div class="form-outline mb-4 mt-2 d-flex flex-row">
-                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"])): ?>
+                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"]) || $data["u_status_pendaftaran"] != "Lolos"): ?>
                                 <div class="col-6">
                                     <input type="file" name="ijazah" id="input-ijazah" class="form-control form-control-lg required">
                                 </div>
@@ -149,7 +149,7 @@
                             <!-- Input transkrip-nilai -->
                             <label class="primary-font fs-6" for="input-transkrip-nilai">Transkrip Nilai</label>
                             <div class="form-outline mb-4 mt-2 d-flex flex-row">
-                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"])): ?>
+                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"]) || $data["u_status_pendaftaran"] != "Lolos"): ?>
                                 <div class="col-6">
                                     <input type="file" name="transkrip_nilai" id="input-transkrip-nilai" class="form-control form-control-lg required">
                                 </div>
