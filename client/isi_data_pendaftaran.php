@@ -175,9 +175,11 @@
 
 
                             <!-- Tombol registrasi -->
+                            <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"]) || $data["u_status_pendaftaran"] != "Lolos"): ?>
                             <div class="col d-flex justify-content-between mt-3">
                                 <button id="button-simpan-data" type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6">Simpan Data</button>
                             </div>
+                            <?php endif ?>
                         </form>
                     </div>
                 </div>

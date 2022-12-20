@@ -79,38 +79,96 @@
                             </div>
                             <!-- Input pas-foto -->
                             <label class="primary-font fs-6" for="input-pas-foto">Pas Foto</label>
-                            <div class="form-outline mb-4 mt-2">
-                                <input type="file" name="pas_foto" id="input-pas-foto" class="form-control form-control-lg required">
+                            <div class="form-outline mb-4 mt-2 d-flex flex-row">
+                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"])): ?>
+                                <div class="col-6">
+                                    <input type="file" name="pas_foto" id="input-pas-foto" class="form-control form-control-lg required">
+                                </div>
+                                <?php endif ?>
+                                
+                                <div class="col-6 p-2 m-0 d-flex flex-column justify-content-center">
+                                <?php if(isset($data["u_pas_foto"]) && !is_null($data["u_pas_foto"])): ?>    
+                                    <a href="<?php echo "./server".$data["u_pas_foto"] ?>"><p class="primary-font fs-6 text-center">Pas Foto</p></a>
+                                <?php else: ?>
+                                    <p class="primary-font fs-6 text-center">Belum upload</p>
+                                <?php endif ?>
+                                </div>
                             </div>
 
                             <!-- Input foto-ktp -->
                             <label class="primary-font fs-6" for="input-foto-ktp">Kartu Tanda Penduduk</label>
-                            <div class="form-outline mb-4 mt-2">
-                                <input type="file" name="foto_ktp" id="input-foto-ktp" class="form-control form-control-lg required">
+                            <div class="form-outline mb-4 mt-2 d-flex flex-row">
+                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"])): ?>
+                                <div class="col-6">
+                                    <input type="file" name="foto_ktp" id="input-foto-ktp" class="form-control form-control-lg required">
+                                </div>
+                                <?php endif ?>
+                                <div class="col-6 p-2 m-0 d-flex flex-column justify-content-center">
+                                    <?php if(isset($data["u_foto_ktp"]) && !is_null($data["u_foto_kk"])): ?>    
+                                        <a href="<?php echo "./server".$data["u_foto_ktp"] ?>"><p class="primary-font fs-6 text-center">Foto Kartu Tanda Penduduk</p></a>
+                                    <?php else: ?>
+                                        <p class="primary-font fs-6 text-center">Belum upload</p>
+                                    <?php endif ?>
+                                </div>
                             </div>
 
                             <!-- Input foto-kk -->
                             <label class="primary-font fs-6" for="input-foto-kk">Kartu Keluarga</label>
-                            <div class="form-outline mb-4 mt-2">
-                                <input type="file" name="foto_kk" id="input-foto-kk" class="form-control form-control-lg required">
+                            <div class="form-outline mb-4 mt-2 d-flex flex-row">
+                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"])): ?>
+                                <div class="col-6">
+                                    <input type="file" name="foto_kk" id="input-foto-kk" class="form-control form-control-lg required">
+                                </div>
+                                <?php endif ?>
+                                <div class="col-6 p-2 m-0 d-flex flex-column justify-content-center">
+                                    <?php if(isset($data["u_foto_kk"]) && !is_null($data["u_foto_kk"])): ?>    
+                                        <a href="<?php echo "./server".$data["u_foto_kk"] ?>"><p class="primary-font fs-6 text-center">Foto Kartu Keluarga</p></a>
+                                    <?php else: ?>
+                                        <p class="primary-font fs-6 text-center">Belum upload</p>
+                                    <?php endif ?>
+                                </div>
                             </div>
 
                             <!-- Input ijazah -->
                             <label class="primary-font fs-6" for="input-ijazah">Ijazah</label>
-                            <div class="form-outline mb-4 mt-2">
-                                <input type="file" name="ijazah" id="input-ijazah" class="form-control form-control-lg required">
+                            <div class="form-outline mb-4 mt-2 d-flex flex-row">
+                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"])): ?>
+                                <div class="col-6">
+                                    <input type="file" name="ijazah" id="input-ijazah" class="form-control form-control-lg required">
+                                </div>
+                                <?php endif ?>
+                                <div class="col-6 p-2 m-0 d-flex flex-column justify-content-center">
+                                    <?php if(isset($data["u_ijazah"]) && !is_null($data["u_ijazah"])): ?>    
+                                        <a href="<?php echo "./server".$data["u_ijazah"] ?>"><p class="primary-font fs-6 text-center">Foto Ijazah</p></a>
+                                    <?php else: ?>
+                                        <p class="primary-font fs-6 text-center">Belum upload</p>
+                                    <?php endif ?>
+                                </div>
                             </div>
 
                             <!-- Input transkrip-nilai -->
                             <label class="primary-font fs-6" for="input-transkrip-nilai">Transkrip Nilai</label>
-                            <div class="form-outline mb-4 mt-2">
-                                <input type="file" name="transkrip_nilai" id="input-transkrip-nilai" class="form-control form-control-lg required">
+                            <div class="form-outline mb-4 mt-2 d-flex flex-row">
+                                <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"])): ?>
+                                <div class="col-6">
+                                    <input type="file" name="transkrip_nilai" id="input-transkrip-nilai" class="form-control form-control-lg required">
+                                </div>
+                                <?php endif ?>
+                                <div class="col-6 p-2 m-0 d-flex flex-column justify-content-center">
+                                    <?php if(isset($data["u_transkrip_nilai"]) && !is_null($data["u_transkrip_nilai"])): ?>    
+                                        <a href="<?php echo "./server".$data["u_transkrip_nilai"] ?>"><p class="primary-font fs-6 text-center">Foto Transkrip Nilai</p></a>
+                                    <?php else: ?>
+                                        <p class="primary-font fs-6 text-center">Belum upload</p>
+                                    <?php endif ?>
+                                </div>
                             </div>
 
                             <!-- Tombol registrasi -->
+                            <?php if(!isset($data["u_status_pendaftaran"]) || is_null($data["u_status_pendaftaran"]) || $data["u_status_pendaftaran"] != "Lolos"): ?>
                             <div class="col d-flex justify-content-between mt-3">
                                 <button id="button-upload-berkas" type="button" class="btn btn-primary btn-block rounded-pill mb-4 primary-font fs-6">Update Berkas</button>
                             </div>
+                            <?php endif ?>
                         </form>
                     </div>
                 </div>

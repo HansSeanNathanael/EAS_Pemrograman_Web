@@ -91,7 +91,7 @@
         <div class="col-12 p-5 m-0 d-flex flex-grow-1 justify-content-center align-items-center color-white-background">
             <div class="row col-10 d-flex flex-column">
                 <div class="pb-4 d-flex flex-row justify-content-end">
-                    <button type="button" class="btn btn-primary btn-block rounded-pill col-2 primary-font fs-6" onclick="">Unduh</button>
+                    <button id="button-unduh" type="button" class="btn btn-primary btn-block rounded-pill col-2 primary-font fs-6">Unduh</button>
                 </div>
                 <div class="border border-1 border-dark bg-white">
                     <div class="row d-flex flex-column px-5">
@@ -148,7 +148,7 @@
                                         <p class="primary-font fs-5">Nomor Peserta</p>
                                     </div>
                                     <div class="col-8">
-                                        <p class="primary-font fs-5 ps-3"><?php echo $data["u_nomor_registrasi"]; ?></p>
+                                        <p class="primary-font fs-5 ps-3"><?php echo str_pad($data['u_nomor_registrasi'],8,'0', STR_PAD_LEFT); ?></p>
                                     </div>
                                 </div>
                                 <div class="col-12 d-flex flex-row">
